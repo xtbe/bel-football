@@ -52,6 +52,11 @@ line-length = 100
 # B = bug-bear, SIM = simplify.
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
+[tool.ruff.format]
+# Don't reformat Python snippets inside Markdown — the aligned comments in the
+# docs are intentional.
+exclude = ["*.md"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
