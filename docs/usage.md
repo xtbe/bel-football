@@ -90,7 +90,7 @@ more teams raises `AmbiguousTeamError`. No match at any stage raises
 `TeamNotFoundError`.
 
 ```python
-client.resolve_team("gent")        # -> Team(id='1', name='KAA Gent')
+client.resolve_team("gent")        # -> {'id': '1', 'name': 'KAA Gent'}
 client.resolve_team("brugge")      # -> AmbiguousTeamError: Club Brugge, Cercle Brugge
 client.resolve_team("charleroi?!") # -> TeamNotFoundError
 ```
@@ -101,10 +101,10 @@ client.resolve_team("charleroi?!") # -> TeamNotFoundError
 
 Create a client. See [Configuration](#configuration) for `base_url` resolution.
 
-### `client.resolve_team(query: str) -> Team`
+### `client.resolve_team(query: str) -> dict`
 
-Resolve a casual team name to a single `Team`. Raises `TeamNotFoundError` or
-`AmbiguousTeamError`.
+Resolve a casual team name to `{"id": ..., "name": ...}`. Raises
+`TeamNotFoundError` or `AmbiguousTeamError`.
 
 ### `client.get_jupiler_pro_league_standing(team: str, season: str | None = None) -> dict`
 
@@ -123,8 +123,10 @@ exit.
 
 ### `Team`
 
-Frozen dataclass with `id: str` and `name: str` (plus internal, `repr`-hidden
-fields used by the resolver). Built from an API payload via `Team.from_api(dict)`.
+Internal frozen dataclass with `id: str` and `name: str` (plus `repr`-hidden
+fields used by the resolver). Built from an API payload via `Team.from_api(dict)`,
+serialised with `Team.to_dict()`. The client methods return the dict form; `Team`
+is exported mainly for type annotations.
 
 ## Exception hierarchy
 

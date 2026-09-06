@@ -38,7 +38,7 @@ from bel_football import BelFootballClient
 
 with BelFootballClient() as client:
     team = client.resolve_team("kaa gent")
-    print(team)                      # Team(id='1', name='KAA Gent')
+    print(team)                      # {'id': '1', 'name': 'KAA Gent'}
 
     standing = client.get_jupiler_pro_league_standing("gent")
     print(standing)

@@ -70,9 +70,17 @@ class BelFootballClient:
         """Discard the cached team list so the next call re-fetches it."""
         self._teams = None
 
-    def resolve_team(self, query: str) -> Team:
+    def _resolve(self, query: str) -> Team:
         """Resolve a casual team name to a :class:`Team` (see resolver rules)."""
         return resolve_team(query, self._ensure_teams())
+
+    def resolve_team(self, query: str) -> dict[str, str]:
+        """Resolve a casual team name to ``{"id": ..., "name": ...}``.
+
+        Raises:
+            TeamNotFoundError / AmbiguousTeamError: ``query`` could not be resolved.
+        """
+        return self._resolve(query).to_dict()
 
     def get_jupiler_pro_league_standing(self, team: str, season: str | None = None) -> dict:
         """Return the Jupiler Pro League standing for ``team``.
@@ -83,6 +91,6 @@ class BelFootballClient:
             TeamNotFoundError / AmbiguousTeamError: ``team`` could not be resolved.
             APIError: the API request failed.
         """
-        match = self.resolve_team(team)
+        match = self._resolve(team)
         params = {"season": season} if season else None
         return self._get(f"/api/teams/{match.id}/standing", params=params)

@@ -22,7 +22,7 @@ def client():
 @respx.mock
 def test_team_list_is_fetched_once(client):
     route = respx.get(f"{BASE}/api/teams").mock(return_value=httpx.Response(200, json=TEAMS_JSON))
-    assert client.resolve_team("gent").name == "KAA Gent"
+    assert client.resolve_team("gent") == {"id": "1", "name": "KAA Gent"}
     client.resolve_team("brugge")  # second lookup...
     assert route.call_count == 1  # ...but cache means only one HTTP call
 

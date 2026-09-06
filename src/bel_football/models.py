@@ -31,3 +31,7 @@ class Team:
             stripped_norm=strip_known_prefix(full_norm),
             tokens=frozenset(full_norm.split()),
         )
+
+    def to_dict(self) -> dict[str, str]:
+        """Return the public fields as a plain JSON-serialisable dict."""
+        return {"id": self.id, "name": self.name}

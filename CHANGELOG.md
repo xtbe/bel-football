@@ -6,6 +6,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+- `BelFootballClient.resolve_team()` now returns a plain `{"id", "name"}` dict
+  instead of a `Team` object, for consistency with
+  `get_jupiler_pro_league_standing()` and easier use as an agent tool.
+
+### Added
+- `Team.to_dict()` for JSON-serialisable output.
+
 ## [0.1.0] - 2026-09-06
 
 ### Added
