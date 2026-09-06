@@ -1,6 +1,6 @@
 [project]
 name = "bel-football"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python client for a local football API: Jupiler Pro League standings and fuzzy Belgian club-name resolution."
 readme = "README.md"
 requires-python = ">=3.13"

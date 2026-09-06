@@ -6,6 +6,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-06
+
 ### Changed
 - `BelFootballClient.resolve_team()` now returns a plain `{"id", "name"}` dict
   instead of a `Team` object, for consistency with
@@ -29,5 +31,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `http://localhost:8000` default.
 - Test suite (pytest + respx) and ruff lint/format configuration.
 
-[Unreleased]: https://github.com/xtbe/bel-football/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/xtbe/bel-football/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/xtbe/bel-football/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/xtbe/bel-football/releases/tag/v0.1.0
